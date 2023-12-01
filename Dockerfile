@@ -1,12 +1,7 @@
-FROM node:13
-
-WORKDIR /usr/app
-
-COPY package*.json ./
+FROM node:19
+WORKDIR /app
+COPY www/ /app/
 RUN npm install
-RUN npm run build
-COPY www ./
-
 EXPOSE 8083
 
 CMD ["node", "server.js"]
