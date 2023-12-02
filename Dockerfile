@@ -1,8 +1,10 @@
 FROM node:19
-WORKDIR /app
-COPY www/ /app/
-RUN npm install
+## Create app directory
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm ci 
+
+COPY . .
 EXPOSE 8083
-
-CMD ["node", "server.js"]
-
+CMD [ "npm", "run", "prod" ]
